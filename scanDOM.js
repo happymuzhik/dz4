@@ -1,4 +1,8 @@
 var scanDOM = function(element){
+	if(scanDOM.result){
+		scanDOM.result.tags = {};
+		scanDOM.result.classes = {};
+	}
 	if (!element){ element = document; }
 	for (var i = 0; i < element.children.length; i++) {
 		if (element.children[i].children.length > 0){
@@ -10,12 +14,12 @@ var scanDOM = function(element){
 			scanDOM.result.tags[element.children[i].tagName] = 1;
 		}
 		if (element.children[i].classList.length > 0){
-			for (var j = 0; j < element.children[j].classList.length; j++) {
+			for (var j = 0; j < element.children[i].classList.length; j++) {
 				if (scanDOM.result.classes[element.children[i].classList[j]]){
 					scanDOM.result.classes[element.children[i].classList[j]]++;
 				}else{
 					scanDOM.result.classes[element.children[i].classList[j]] = 1;
-				}				
+				}
 			};
 		}
 	};
