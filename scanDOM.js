@@ -1,8 +1,4 @@
 var scanDOM = function(element){
-	if(scanDOM.result){
-		scanDOM.result.tags = {};
-		scanDOM.result.classes = {};
-	}
 	if (!element){ element = document; }
 	for (var i = 0; i < element.children.length; i++) {
 		if (element.children[i].children.length > 0){
@@ -23,6 +19,9 @@ var scanDOM = function(element){
 			};
 		}
 	};
+	if (element == document){
+		console.log(scanDOM.result);
+	}
 	return scanDOM.result;
 };
 scanDOM.result = {
